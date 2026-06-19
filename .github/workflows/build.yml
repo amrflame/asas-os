@@ -1,0 +1,44 @@
+name: Build
+
+on:
+  push:
+    branches: ["main", "master"]
+  pull_request:
+    branches: ["main", "master"]
+  workflow_dispatch:
+
+jobs:
+  windows-build:
+    name: Windows build
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up MSVC
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Install NASM
+        shell: pwsh
+        run: |
+          choco install nasm -y --no-progress
+          $expected = Join-Path (Split-Path -Parent $env:GITHUB_WORKSPACE) "tools\nasm-2.16.03"
+          New-Item -ItemType Directory -Force -Path $expected | Out-Null
+          $nasm = (Get-Command nasm.exe).Source
+          Copy-Item -LiteralPath $nasm -Destination (Join-Path $expected "nasm.exe") -Force
+
+      - name: Build ISO
+        shell: pwsh
+        run: |
+          powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\New-AsasIso.ps1 -Build
+
+      - name: Upload release artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: asas-os-build
+          path: |
+            build/releases/*.iso
+            build/releases/latest.txt
+            build/releases/VERSIONS.txt
+          if-no-files-found: warn
