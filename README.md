@@ -18,6 +18,8 @@ Public repository target:
 https://github.com/amrflame/asas-os
 ```
 
+![Asas OS desktop showing terminal, file manager, settings, about, and disk manager](docs/assets/asas-os-desktop.png)
+
 ## Highlights
 
 - UEFI x86_64 bootloader and standalone kernel image.

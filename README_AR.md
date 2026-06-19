@@ -13,6 +13,8 @@
 https://github.com/amrflame/asas-os
 ```
 
+![سطح مكتب Asas OS مع Terminal وFile Manager وSettings وAbout وDisk Manager](docs/assets/asas-os-desktop.png)
+
 ## أهم المميزات
 
 - إقلاع UEFI x86_64.
