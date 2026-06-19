@@ -1,13 +1,15 @@
 # Asas OS 1.0
 
 **Asas OS** is a small x86_64 operating system built from scratch with C, C++,
-and Assembly. The name "Asas" means "foundation": this project is a learning and
-systems-engineering effort to build the core layers of an operating system from
-the ground up.
+and Assembly. The name "Asas" means "foundation": this project is an open
+workshop for people who want to understand, build, and improve the layers that
+make an operating system feel alive, from UEFI boot to a custom desktop,
+filesystems, storage drivers, and developer tooling.
 
-Version **1.0** is the first stable public milestone. It boots through UEFI,
-runs a custom kernel and GUI, exposes an interactive shell, and has a stable
-Hyper-V Generation 2 live environment with working keyboard and mouse input.
+Version **1.0** is the first public milestone that is exciting enough to invite
+people in. It boots through UEFI, runs a custom kernel and GUI, exposes an
+interactive shell, and has a stable Hyper-V Generation 2 live environment with
+working keyboard, mouse, disk discovery, and a growing disk-management stack.
 
 > Asas OS is an experimental hobby/research operating system. It is not intended
 > to replace a production desktop/server OS.
@@ -19,6 +21,26 @@ https://github.com/amrflame/asas-os
 ```
 
 ![Asas OS desktop showing terminal, file manager, settings, about, and disk manager](docs/assets/asas-os-desktop.png)
+
+## Why Contribute?
+
+Operating-system development is usually hidden behind huge codebases. Asas OS
+tries to keep the door open: the code is small enough to study, but real enough
+to teach serious systems work. A contribution here can touch the boot path, a
+filesystem, a block device, the GUI, a shell command, documentation, tests, or a
+new hardware experiment.
+
+Good contributions are welcome at every level:
+
+- first-time contributors can improve docs, screenshots, command help, tests,
+  and small GUI details;
+- systems contributors can work on storage, VFS, filesystems, scheduling,
+  memory, networking, and hardware paths;
+- testers can boot new VM configurations, try real disk images, report exact
+  logs, and help turn experiments into reliable behavior.
+
+The project values careful engineering: small pull requests, clear test notes,
+and safe failure modes matter more than dramatic rewrites.
 
 ## Highlights
 
@@ -360,6 +382,11 @@ Arabic contribution notes are available in `CONTRIBUTING_AR.md`.
 
 For security-sensitive reports, read `SECURITY.md`. Arabic security notes are in
 `SECURITY_AR.md`.
+
+If you are not sure where to start, look for issues labeled `good first issue`,
+`help wanted`, `docs`, `tests`, `gui`, `filesystem`, or `storage`. You can also
+open a short discussion with the area you want to explore, and maintainers can
+help shape it into a safe first patch.
 
 ## License
 
