@@ -22,6 +22,87 @@ https://github.com/amrflame/asas-os
 
 ![Asas OS desktop showing terminal, file manager, settings, about, and disk manager](docs/assets/asas-os-desktop.png)
 
+## Fast Start
+
+Want to see Asas OS running as quickly as possible?
+
+1. Clone the repository:
+
+```powershell
+git clone https://github.com/amrflame/asas-os.git
+cd asas-os
+```
+
+2. Build the Hyper-V/QEMU-ready ISO:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\New-AsasIso.ps1 -Build
+```
+
+3. Find the generated ISO:
+
+```text
+build/releases/asas-os-*.iso
+```
+
+4. Boot it in **Hyper-V Generation 2**:
+
+- create a Generation 2 VM;
+- disable Secure Boot;
+- attach the generated ISO to the DVD drive;
+- start the VM.
+
+5. Inside Asas OS, try:
+
+```text
+help
+ls
+disk rescan
+fs info /
+```
+
+Optional QEMU smoke test:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tests\Run-QemuBootTest.ps1
+```
+
+## Fast Contribute
+
+Want to make a first useful contribution without getting lost?
+
+1. Fork the repository on GitHub.
+2. Create a branch:
+
+```powershell
+git checkout -b docs/first-improvement
+```
+
+3. Pick one small change:
+
+- improve a README section or Arabic translation;
+- add a missing shell-command example;
+- report a Hyper-V/QEMU boot result;
+- improve a GUI label or error message;
+- add a small test note for storage or filesystem behavior.
+
+4. Build or run the closest check:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\New-AsasIso.ps1 -Build
+```
+
+5. Commit and push:
+
+```powershell
+git add .
+git commit -m "Describe the improvement"
+git push origin docs/first-improvement
+```
+
+6. Open a Pull Request and include what you tested. For deeper work, read
+`CONTRIBUTING.md` first, especially the storage/filesystem safety notes.
+
 ## Why Contribute?
 
 Operating-system development is usually hidden behind huge codebases. Asas OS

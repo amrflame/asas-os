@@ -16,6 +16,87 @@ https://github.com/amrflame/asas-os
 
 ![سطح مكتب Asas OS مع Terminal وFile Manager وSettings وAbout وDisk Manager](docs/assets/asas-os-desktop.png)
 
+## تجربة سريعة Fast Start
+
+عاوز تشوف Asas OS شغال بأسرع طريقة؟
+
+1. انسخ المستودع:
+
+```powershell
+git clone https://github.com/amrflame/asas-os.git
+cd asas-os
+```
+
+2. ابن ISO جاهز لـHyper-V/QEMU:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\New-AsasIso.ps1 -Build
+```
+
+3. ستجد الـISO الناتج هنا:
+
+```text
+build/releases/asas-os-*.iso
+```
+
+4. شغله على **Hyper-V Generation 2**:
+
+- أنشئ VM من نوع Generation 2.
+- عطّل Secure Boot.
+- اربط ملف ISO الناتج في DVD Drive.
+- شغّل الـVM.
+
+5. داخل Asas OS جرّب:
+
+```text
+help
+ls
+disk rescan
+fs info /
+```
+
+اختبار QEMU اختياري سريع:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tests\Run-QemuBootTest.ps1
+```
+
+## مساهمة سريعة Fast Contribute
+
+عاوز تعمل أول مساهمة مفيدة بدون ما تتوه؟
+
+1. اعمل Fork للمستودع على GitHub.
+2. أنشئ branch:
+
+```powershell
+git checkout -b docs/first-improvement
+```
+
+3. اختر تغييرًا صغيرًا:
+
+- حسّن فقرة في README أو الترجمة العربية.
+- أضف مثالًا ناقصًا لأمر shell.
+- أبلغ عن نتيجة تشغيل Hyper-V/QEMU.
+- حسّن label أو رسالة خطأ في GUI.
+- أضف ملاحظة اختبار صغيرة لسلوك storage أو filesystem.
+
+4. ابن المشروع أو شغل أقرب تحقق:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\New-AsasIso.ps1 -Build
+```
+
+5. اعمل commit وpush:
+
+```powershell
+git add .
+git commit -m "Describe the improvement"
+git push origin docs/first-improvement
+```
+
+6. افتح Pull Request واكتب ما الذي اختبرته. لو التغيير أعمق، اقرأ
+`CONTRIBUTING_AR.md` أولًا، خصوصًا ملاحظات أمان storage وfilesystems.
+
 ## لماذا تساهم؟
 
 تطوير أنظمة التشغيل عادة يبدو بعيدًا ومغلقًا داخل مشاريع ضخمة. Asas OS يحاول
